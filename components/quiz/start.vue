@@ -20,8 +20,7 @@
       <li>Das Endresultat ist die Summe aller korrekt beantworteten Fragen.</li>
       <li>Die Fragen werden nach dem Multiple Choice verfahren gestellt.</li>
       <li>
-        Das Quiz findet auf Englisch statt, da ich noch keine Translation Api
-        eingebaut habe ;)
+        Das Quiz findet auf Englisch statt.
       </li>
     </ul>
     <button @click="$emit('start')">Start</button>

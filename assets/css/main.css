@@ -28,7 +28,7 @@ body {
   margin: 0 auto;
   background: var(--main-bg-color);
   color: var(--main-text-color);
-  font-family: "Lucida Console", Courier, monospace;
+  font-family: "Outfit", sans-serif;
   font-size: clamp(1rem, 1vw, 1.5rem);
   width: clamp(22rem, 98vw, 1600px);
 }
@@ -85,6 +85,10 @@ header {
 
 main {
   flex: 1;
+}
+
+select, option, input, textarea {
+  font-family: "Outfit", sans-serif;
 }
 
 .page-wrapper {

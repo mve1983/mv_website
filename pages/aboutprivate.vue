@@ -4,7 +4,7 @@
   <AppHeader />
   <div class="page-wrapper">
     <main>
-      <p>about private</p>
+      <p>in Arbeit...</p>
     </main>
     <AppFooter />
   </div>

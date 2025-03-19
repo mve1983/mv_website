@@ -29,7 +29,7 @@ const fiveQuestionsReached = computed(
   () => quizStore.state.value.alreadPlayedQuestionIDs.length === 5
 );
 
-const cardHeadline = computed(() => {
+const cardHeadlineFront = computed(() => {
   if (
     !showFalse.value &&
     !showCorrect.value &&
@@ -44,6 +44,9 @@ const cardHeadline = computed(() => {
     quizStore.state.value.currentQuestion
   )
     return `Question ${quizStore.state.value.alreadPlayedQuestionIDs.length}`;
+});
+
+const cardHeadlineBack = computed(() => {
   if (showFalse.value || showCorrect.value) return "Question result";
   if (showFinal.value) return "Final result";
 });
@@ -120,7 +123,7 @@ function animationAndClearBetweenQuestions() {
     setTimeout(() => {
       emit("reset");
       showFinal.value = false;
-    }, 5000);
+    }, 8000);
   }
   if (!fiveQuestionsReached.value) {
     questionIsInCheck.value = false;
@@ -133,8 +136,8 @@ function animationAndClearBetweenQuestions() {
     <div
       class="quiz-card"
       :class="{ transform: questionIsInCheck, loading: questionLoading }">
-      <div class="quiz-card-front" :class="{load: questionLoading}" >
-        <h4>{{ cardHeadline }}</h4>
+      <div class="quiz-card-front" :class="{ load: questionLoading }">
+        <h4>{{ cardHeadlineFront }}</h4>
         <form
           @submit.prevent
           v-if="
@@ -144,7 +147,7 @@ function animationAndClearBetweenQuestions() {
             !showFalse &&
             !showFinal
           ">
-          <label for="category">Select category:</label>
+          <label for="category">Select category:</label><br />
           <select name="category" id="category" v-model="category">
             <option disabled value="">Please choose:</option>
             <option v-for="category in categoriesAvaiable">
@@ -152,7 +155,7 @@ function animationAndClearBetweenQuestions() {
             </option>
           </select>
           <br />
-          <label for="difficulty">Select difficulty:</label>
+          <label for="difficulty">Select difficulty:</label><br />
           <select name="difficulty" id="difficulty" v-model="difficulty">
             <option disabled value="">Please choose:</option>
             <option value="easy">easy</option>
@@ -165,6 +168,7 @@ function animationAndClearBetweenQuestions() {
           </button>
         </form>
         <div
+          class="question-wrapper"
           v-if="
             quizStore.state.value.currentQuestion &&
             !showCorrect &&
@@ -172,15 +176,18 @@ function animationAndClearBetweenQuestions() {
             !showFinal
           ">
           <div v-html="quizStore.state.value.currentQuestion.question"></div>
-          <button
+          <div
             v-for="(answer, index) in quizStore.state.value.currentQuestion
-              .allAnswers"
-            class="card-button"
-            @click="checkIfCorrect(index)"
-            v-html="answer"></button>
+              .allAnswers">
+            <button
+              class="card-button"
+              @click="checkIfCorrect(index)"
+              v-html="answer"></button>
+          </div>
         </div>
       </div>
-      <div class="quiz-card-back" :class="{load: questionLoading}">
+      <div class="quiz-card-back" :class="{ load: questionLoading }">
+        <h4>{{ cardHeadlineBack }}</h4>
         <div v-if="showCorrect">
           Correct
           <div>
@@ -196,8 +203,8 @@ function animationAndClearBetweenQuestions() {
             {{ quizStore.state.value.currentPoints }} points.
           </div>
         </div>
-        <div v-if="showFinal">
-          That was five questions, your total score is
+        <div v-if="showFinal" class="final-score">
+          Five questions answered, your total score is
           {{ quizStore.state.value.currentPoints }}
         </div>
       </div>
@@ -206,10 +213,40 @@ function animationAndClearBetweenQuestions() {
 </template>
 
 <style lang="css" scoped>
+select {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  height: 2rem;
+  border-radius: 0.3rem;
+}
+
+.card-button {
+  background-color: var(--main-bg-color);
+  border: 0.1rem var(--main-bg-color) solid;
+  color: var(--main-text-color);
+}
+
+.card-button:hover,
+.card-button:active {
+  border: 0.1rem var(--main-bg-color) solid;
+  background-color: var(--main-text-color);
+  color: var(--main-bg-color);
+}
+
+.final-score {
+  text-decoration: underline;
+}
+
+.question-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .quiz-card-wrapper {
   margin: 2rem auto;
-  width: clamp(260px, 480px, 800px);
-  height: clamp(540px, 600px, 900px);
+  width: clamp(220px, 400px, 800px);
+  height: clamp(480px, 560px, 900px);
   perspective: 1600px;
 }
 
@@ -233,27 +270,28 @@ function animationAndClearBetweenQuestions() {
   backface-visibility: hidden;
   background-color: var(--main-text-color);
   color: var(--main-bg-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.quiz-card-front > form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.quiz-card-front > form > button {
+ margin-top: 3rem;
 }
 
 .quiz-card-back {
-  background-color: var(--main-text-color);
-  color: var(--main-bg-color);
-  transform: rotateY(180deg);
-}
-
-.card-button {
   background-color: var(--main-bg-color);
-  border: 0.1rem var(--main-bg-color) solid;
   color: var(--main-text-color);
-}
-.card-button:hover,
-.card-button:active {
-  border: 0.1rem var(--main-bg-color) solid;
-  background-color: var(--main-text-color);
-  color: var(--main-bg-color);
-}
-
-.transform {
   transform: rotateY(180deg);
 }
 
@@ -263,6 +301,10 @@ function animationAndClearBetweenQuestions() {
 
 .loading {
   animation: loading 0.5s infinite linear;
+}
+
+.transform {
+  transform: rotateY(180deg);
 }
 
 @keyframes loading {
