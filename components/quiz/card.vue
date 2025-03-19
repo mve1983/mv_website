@@ -8,6 +8,7 @@ const showFalse = ref(false);
 const showFinal = ref(false);
 const questionIsInCheck = ref(false);
 const questionLoading = ref(false);
+const showErrorNoSelects = ref(false);
 const quizStore = useQuizStore();
 
 const emit = defineEmits(["reset"]);
@@ -53,6 +54,10 @@ const cardHeadlineBack = computed(() => {
 });
 
 function requestQuestion() {
+  if (!category.value || !difficulty.value) {
+    showErrorNoSelects.value = true;
+    return;
+  }
   const requestedCategory = categories.value?.trivia_categories.filter(
     (c) => category.value === c.name
   )[0];
@@ -67,26 +72,6 @@ function requestQuestion() {
   quizStore.state.value.currentDifficulty = requestDifficulty;
 
   getQuestion();
-}
-
-async function getQuestion() {
-  questionLoading.value = true;
-  const response: ApiQuestionResponse = await $fetch("/api/getQuizQuestion", {
-    method: "POST",
-    body: quizStore.state.value,
-  });
-  const question = {
-    question: response.results[0].question,
-    correctAnswer: response.results[0].correct_answer,
-    allAnswers: shuffleArray([
-      response.results[0].correct_answer,
-      ...response.results[0].incorrect_answers,
-    ]),
-  };
-  setTimeout(() => {
-    quizStore.state.value.currentQuestion = question;
-    questionLoading.value = false;
-  }, 2000);
 }
 
 function checkIfCorrect(index: number) {
@@ -130,6 +115,30 @@ function animationAndClearBetweenQuestions() {
     questionIsInCheck.value = false;
   }
 }
+
+function resetErrorNoSelects() {
+  showErrorNoSelects.value = false;
+}
+
+async function getQuestion() {
+  questionLoading.value = true;
+  const response: ApiQuestionResponse = await $fetch("/api/getQuizQuestion", {
+    method: "POST",
+    body: quizStore.state.value,
+  });
+  const question = {
+    question: response.results[0].question,
+    correctAnswer: response.results[0].correct_answer,
+    allAnswers: shuffleArray([
+      response.results[0].correct_answer,
+      ...response.results[0].incorrect_answers,
+    ]),
+  };
+  setTimeout(() => {
+    quizStore.state.value.currentQuestion = question;
+    questionLoading.value = false;
+  }, 2000);
+}
 </script>
 
 <template>
@@ -148,20 +157,31 @@ function animationAndClearBetweenQuestions() {
             !showFalse &&
             !showFinal
           ">
-          <select name="category" id="category" v-model="category">
+          <select
+            name="category"
+            id="category"
+            v-model="category"
+            @focus="resetErrorNoSelects()">
             <option disabled value="">Select category:</option>
             <option v-for="category in categoriesAvaiable">
               {{ category.name }}
             </option>
           </select>
           <br />
-          <select name="difficulty" id="difficulty" v-model="difficulty">
+          <select
+            name="difficulty"
+            id="difficulty"
+            v-model="difficulty"
+            @focus="resetErrorNoSelects()">
             <option disabled value="">Select difficulty:</option>
             <option value="easy">easy</option>
             <option value="medium">medium</option>
             <option value="hard">hard</option>
           </select>
           <br />
+          <p v-if="showErrorNoSelects" class="no-selection">
+            Please choose category and difficulty first.
+          </p>
           <button class="card-button" @click="requestQuestion()">
             Question
           </button>
@@ -215,8 +235,9 @@ function animationAndClearBetweenQuestions() {
 select {
   background-color: var(--main-bg-color);
   color: var(--main-text-color);
-  height: 2rem;
+  height: 3rem;
   border-radius: 0.3rem;
+  font-size: clamp(1rem, 1.1rem, 1.4rem);
 }
 
 .card-button {
@@ -236,6 +257,12 @@ select {
   text-decoration: underline;
 }
 
+.no-selection {
+  background-color: brown;
+  padding: 0.1rem;
+  border-radius: 0.3rem;
+}
+
 .question-wrapper {
   display: flex;
   flex-direction: column;
@@ -244,8 +271,8 @@ select {
 
 .quiz-card-wrapper {
   margin: 2rem auto;
-  width: clamp(220px, 400px, 800px);
-  height: clamp(480px, 560px, 900px);
+  width: 290px;
+  height: 460px;
   perspective: 1600px;
 }
 
@@ -312,6 +339,13 @@ select {
   }
   to {
     transform: rotateY(360deg);
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .quiz-card-wrapper {
+    width: clamp(340px, 480px, 800px);
+    height: clamp(620px, 700px, 1100px);
   }
 }
 </style>
