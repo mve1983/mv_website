@@ -47,7 +47,8 @@ const cardHeadlineFront = computed(() => {
 });
 
 const cardHeadlineBack = computed(() => {
-  if (showFalse.value || showCorrect.value) return "Question result";
+  if (showFalse.value || showCorrect.value)
+    return `Question ${quizStore.state.value.alreadPlayedQuestionIDs.length} result`;
   if (showFinal.value) return "Final result";
 });
 
@@ -147,17 +148,15 @@ function animationAndClearBetweenQuestions() {
             !showFalse &&
             !showFinal
           ">
-          <label for="category">Select category:</label><br />
           <select name="category" id="category" v-model="category">
-            <option disabled value="">Please choose:</option>
+            <option disabled value="">Select category:</option>
             <option v-for="category in categoriesAvaiable">
               {{ category.name }}
             </option>
           </select>
           <br />
-          <label for="difficulty">Select difficulty:</label><br />
           <select name="difficulty" id="difficulty" v-model="difficulty">
-            <option disabled value="">Please choose:</option>
+            <option disabled value="">Select difficulty:</option>
             <option value="easy">easy</option>
             <option value="medium">medium</option>
             <option value="hard">hard</option>
@@ -286,7 +285,7 @@ select {
 }
 
 .quiz-card-front > form > button {
- margin-top: 3rem;
+  margin-top: 3rem;
 }
 
 .quiz-card-back {

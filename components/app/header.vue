@@ -7,19 +7,21 @@
       <div class="headline-nav">
         <h1>Manuel Verweyen</h1>
         <nav>
-          <NuxtLink to="/" activeClass="active"><button>Home</button></NuxtLink>
+          <NuxtLink to="/" activeClass="active">
+            <button>Home</button>
+          </NuxtLink>
           <NuxtLink to="/aboutjob" activeClass="active"
-            ><button>Berufliches</button></NuxtLink
-          >
+            ><button>Berufliches</button>
+          </NuxtLink>
           <NuxtLink to="/quiz" activeClass="active"
-            ><button>Quiz</button></NuxtLink
-          >
+            ><button>Quiz</button>
+          </NuxtLink>
           <NuxtLink to="/aboutprivate" activeClass="active"
-            ><button>Privates</button></NuxtLink
-          >
+            ><button>Privates</button>
+          </NuxtLink>
           <NuxtLink to="/contact" activeClass="active"
-            ><button>Kontakt</button></NuxtLink
-          >
+            ><button>Kontakt</button>
+          </NuxtLink>
         </nav>
       </div>
     </div>
@@ -36,7 +38,8 @@ img {
 nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.6rem;
+  margin-top: 0.2rem;
 }
 
 .active > button {

@@ -9,7 +9,7 @@
         <article>
           <JobIntroduction />
         </article>
-        <article>
+        <article class="cv-wrapper">
           <JobCv />
         </article>
       </section>
@@ -21,5 +21,10 @@
 <style lang="css" scoped>
 article {
   margin-top: 1rem;
+}
+
+.cv-wrapper {
+  width: 95%;
+  margin: 3rem auto;
 }
 </style>

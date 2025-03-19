@@ -13,11 +13,14 @@ a {
   text-decoration: inherit;
   color: inherit;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 a:hover,
 a:active {
   text-shadow: 2px 2px 5px var(--main-text-color);
+  transform: scale(1.2);
+  font-size: clamp(1.2rem, 1vw, 1.7rem);
 }
 
 html {
@@ -87,7 +90,10 @@ main {
   flex: 1;
 }
 
-select, option, input, textarea {
+select,
+option,
+input,
+textarea {
   font-family: "Outfit", sans-serif;
 }
 
@@ -101,11 +107,14 @@ select, option, input, textarea {
 
 .pdf-link {
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 .pdf-link:hover,
 .pdf-link:active {
   text-shadow: 2px 2px 5px var(--main-text-color);
+  transform: scale(1.2);
+  font-size: clamp(1.2rem, 1vw, 1.7rem);
 }
 
 .pdf-frame-wrapper {
@@ -189,5 +198,3 @@ select, option, input, textarea {
     margin-top: 20rem;
   }
 }
-
-

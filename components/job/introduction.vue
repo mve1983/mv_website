@@ -1,15 +1,17 @@
 <script setup lang="ts"></script>
 
 <template>
-  <h4>Vorabinfo</h4>
+  <h4>Vom Speditionskaufmann zum Softwareentwickler</h4>
   <p>
     Mit 16 Jahren habe ich mich bewusst dazu entschieden das Gymnasium mit
-    Mittlerer Reife zu verlassen und eine Ausbildung zum Speditionskaufmann zu
-    beginnen. Diese Entscheidung war vor allen Dingen dadurch bedingt, dass ich
-    nach der Schule und in den Sommerferien bereits bei einer Spedition
-    Aushilfstätigkeiten übernommen hatte und dadurch meine Leidenschaft zur
-    Abreit entdeckt habe. Ich wollte zu diesem Zeitpunkt in meinem Leben nicht
-    studieren sondern direkt in die Arbeitswelt einsteigen. <br />
+    Mittlerer Reife (je nach Bundesland auch bekannt als Sekundarabschluss I |
+    Mittlerer Schulabschluss | Fachoberschulreife) zu verlassen und eine
+    Ausbildung zum Speditionskaufmann zu beginnen. Diese Entscheidung war vor
+    allen Dingen dadurch bedingt, dass ich nach der Schule und in den
+    Sommerferien bereits bei einer Spedition Aushilfstätigkeiten übernommen
+    hatte und dadurch meine Leidenschaft zur Abreit entdeckt habe. Ich wollte zu
+    diesem Zeitpunkt in meinem Leben nicht studieren sondern direkt in die
+    Arbeitswelt einsteigen. <br />
     Nach der Ausbildung habe ich zunächst in meinem Ausbildungsbetrieb
     gearbeitet bevor ich dann 2006 von NRW nach Hamburg gezogen bin um fortan im
     Hamburger Hafen zu arbeiten. Dies sollte für die nächsten 15 Jahre meine

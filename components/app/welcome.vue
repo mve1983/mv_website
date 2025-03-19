@@ -15,9 +15,8 @@
   </p>
   <p>
     Unter
-    <NuxtLink to="/code"><strong>Code</strong></NuxtLink>
-    findest du den Link zum Source Code dieser Website inkl. dem verwendeten
-    Tech Stack sowie einige Code Snippets.
+    <NuxtLink to="/qiuz"><strong>Quiz</strong></NuxtLink>
+ findest du ein kleines Quiz, entspanne
   </p>
   <p>
     Unter

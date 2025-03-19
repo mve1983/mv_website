@@ -23,4 +23,5 @@ export default defineNuxtConfig({
   },
 
   css: ["~/assets/css/fonts.css", "~/assets/css/main.css"],
+  compatibilityDate: "2025-03-19",
 });
