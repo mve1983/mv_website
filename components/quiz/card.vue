@@ -222,9 +222,11 @@ async function getQuestion() {
             {{ quizStore.state.value.currentPoints }} points.
           </div>
         </div>
-        <div v-if="showFinal" class="final-score">
-          Five questions answered, your total score is
-          {{ quizStore.state.value.currentPoints }}
+        <div v-if="showFinal">
+          Five questions answered, your total score is <span  class="final-score">
+            {{ quizStore.state.value.currentPoints }} (possible max is
+            50).</span
+          >
         </div>
       </div>
     </div>
@@ -244,6 +246,7 @@ select {
   background-color: var(--main-bg-color);
   border: 0.1rem var(--main-bg-color) solid;
   color: var(--main-text-color);
+  font-size: clamp(1rem, 0.9vw, 1.5rem);
 }
 
 .card-button:hover,
@@ -344,8 +347,8 @@ select {
 
 @media only screen and (min-width: 600px) {
   .quiz-card-wrapper {
-    width: clamp(340px, 480px, 800px);
-    height: clamp(620px, 700px, 1100px);
+    width: clamp(320px, 440px, 800px);
+    height: clamp(500px, 600px, 1100px);
   }
 }
 </style>

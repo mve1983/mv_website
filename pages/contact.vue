@@ -4,6 +4,8 @@
   <AppHeader />
   <div class="page-wrapper">
     <main>
+      <h3>Kontakt</h3>
+      <ContactLinks />
       <ContactForm />
     </main>
     <AppFooter />

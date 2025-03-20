@@ -9,7 +9,7 @@
         <article>
           <JobIntroduction />
         </article>
-        <article class="cv-wrapper">
+        <article class="cv">
           <JobCv />
         </article>
       </section>
@@ -23,8 +23,8 @@ article {
   margin-top: 1rem;
 }
 
-.cv-wrapper {
-  width: 95%;
+.cv {
+  width: 90%;
   margin: 3rem auto;
 }
 </style>

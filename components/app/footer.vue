@@ -2,7 +2,7 @@
 
 <template>
   <footer>
-    <div>&copy; Manuel Verweyen 2025 <span> - Impressum</span></div>
+    <div>&copy; Manuel Verweyen 2025</div>
   </footer>
 </template>
 

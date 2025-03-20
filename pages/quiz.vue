@@ -43,7 +43,7 @@ onBeforeMount(() => {
       <QuizCard v-else @reset="resetGame" />
       <p class="open-trivia-disclaimer">
         Fragen stammen aus der Open Trivia Database.
-        <a href="https://opentdb.com/"><strong>https://opentdb.com</strong></a>
+        <a href="https://opentdb.com/" target="_blank"><strong>https://opentdb.com</strong></a>
       </p>
     </main>
     <AppFooter />
@@ -52,6 +52,6 @@ onBeforeMount(() => {
 
 <style lang="css" scoped>
 .open-trivia-disclaimer {
-  margin-top: 10rem;
+  margin-top: 5rem;
 }
 </style>

@@ -73,8 +73,7 @@ async function postMail() {
 </script>
 
 <template>
-  <h3>Kontakt</h3>
-
+  <h4>Kontaktformular</h4>
   <form @submit.prevent>
     <label for="name">Name:</label>
     <input
@@ -107,14 +106,15 @@ async function postMail() {
       rows="10"
       required
       v-model="message"
-      @focus="resetErrors()">
-    </textarea>
+      @focus="resetErrors()" />
   </form>
   <p>
     Deine Daten werden nur im Vearbeitungsprozess des Sendens benutzt und danach
     gelöscht. <br />
     Es findet keine dauerhafte Speicherung der Daten auf meinem Server oder in
-    einer meiner Datenbanken statt.
+    einer meiner Datenbanken statt. <br />
+    Bitte beachte aber das Senden von Daten übers Internet stellt trotz aller
+    Vorsichtsmaßnahmen immer ein Risiko dar.
   </p>
   <p v-if="showFieldError" class="sign-error">Bitte fülle alle Felder aus.</p>
   <p v-if="showEmailError" class="sign-error">
@@ -141,7 +141,6 @@ form {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
-  margin-top: 2rem;
 }
 
 button {

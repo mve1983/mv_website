@@ -1,8 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  compatibilityDate: '2025-03-20',
   devtools: { enabled: false },
 
   app: {
+    rootTag: 'body',
+    rootId: 'app',
     head: {
       title: "Manuel Verweyen Website",
       htmlAttrs: {
@@ -23,5 +26,4 @@ export default defineNuxtConfig({
   },
 
   css: ["~/assets/css/fonts.css", "~/assets/css/main.css"],
-  compatibilityDate: "2025-03-19",
 });

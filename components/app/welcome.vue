@@ -15,8 +15,9 @@
   </p>
   <p>
     Unter
-    <NuxtLink to="/qiuz"><strong>Quiz</strong></NuxtLink>
- findest du ein kleines Quiz, entspanne
+    <NuxtLink to="/quiz"><strong>Quiz</strong></NuxtLink>
+    findest du ein kleines Quiz, einfach mal kurz abschalten und 5 Fragen
+    beantworten oder das Wissen erweitern. :)
   </p>
   <p>
     Unter
@@ -26,7 +27,8 @@
   <p>
     Unter
     <NuxtLink to="/contact"><strong>Kontakt</strong></NuxtLink>
-    kannst du mir eine Nachricht zukommen lassen.
+    kannst du mir eine Nachricht zukommen lassen und findest einen Link zu
+    meinem Github.
   </p>
   <p>
     Viel Spaß beim Stöbern... <br />
