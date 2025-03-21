@@ -20,7 +20,7 @@
             ><button>Privates</button>
           </NuxtLink>
           <NuxtLink to="/contact" activeClass="active"
-            ><button>Kontakt</button>
+            ><button>Links / Kontakt</button>
           </NuxtLink>
         </nav>
       </div>
@@ -30,7 +30,7 @@
 
 <style lang="css" scoped>
 img {
-  width: clamp(80px, 10vw, 300px);
+  width: clamp(80px, 7vw, 300px);
   border-radius: 9999px;
   box-shadow: 0 0 15px var(--main-text-color);
 }

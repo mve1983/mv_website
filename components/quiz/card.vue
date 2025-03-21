@@ -21,9 +21,19 @@ const { data, error } = await useFetch<QuizCategories>(
 const categories = computed(() => data.value);
 
 const categoriesAvaiable = computed(() => {
-  return categories.value?.trivia_categories.filter(
-    (c) => quizStore.state.value.alreadPlayedQuestionIDs.indexOf(c.id) === -1
-  );
+  return categories.value?.trivia_categories
+    .filter(
+      (c) => quizStore.state.value.alreadPlayedQuestionIDs.indexOf(c.id) === -1
+    )
+    .sort((a: string, b: string): number => {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
+    });
 });
 
 const fiveQuestionsReached = computed(
@@ -223,10 +233,11 @@ async function getQuestion() {
           </div>
         </div>
         <div v-if="showFinal">
-          Five questions answered, your total score is <span  class="final-score">
-            {{ quizStore.state.value.currentPoints }} (possible max is
-            50).</span
-          >
+          Five questions answered, your total score is
+          <span class="final-score">{{
+            quizStore.state.value.currentPoints
+          }}</span>
+          (possible max is 50).
         </div>
       </div>
     </div>
@@ -239,7 +250,6 @@ select {
   color: var(--main-text-color);
   height: 3rem;
   border-radius: 0.3rem;
-  font-size: clamp(1rem, 1.1rem, 1.4rem);
 }
 
 .card-button {

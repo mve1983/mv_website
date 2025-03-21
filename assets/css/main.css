@@ -5,8 +5,8 @@
 }
 
 :root {
-  --main-bg-color: #d9d9d9;
-  --main-text-color: #284b63;
+  --main-bg-color: #f2f2f2;
+  --main-text-color: #03396c;
 }
 
 a {
@@ -46,11 +46,11 @@ button {
   outline: 0;
   border: 0.1rem var(--main-text-color) solid;
   border-radius: 9999px;
-  padding: 0.3rem 0.7rem;
+  padding: 0.2rem 0.6rem;
   background-color: var(--main-text-color);
   color: var(--main-bg-color);
   cursor: pointer;
-  font-size: clamp(0.6rem, 1vw, 2rem);
+  font-size: clamp(0.5rem, 0.8vw, 1.8rem);
   transition: all 0.3s;
 }
 
@@ -63,22 +63,22 @@ button:active {
 }
 
 h1 {
-  font-size: clamp(1.5rem, 3vw, 5rem);
+  font-size: clamp(1.2rem, 2vw, 4rem);
   margin: 0;
 }
 
 h3 {
-  font-size: clamp(1.2rem, 2vw, 3rem);
+  font-size: clamp(1.1rem, 1.5vw, 3rem);
   margin: 3rem 0 0 0;
 }
 
 h4 {
-  font-size: clamp(1.1rem, 1.5vw, 2.5rem);
+  font-size: clamp(1.1rem, 1.3vw, 2.2rem);
   margin: 0;
 }
 
 h5 {
-  font-size: clamp(1rem, 1.3vw, 2.2rem);
+  font-size: clamp(1rem, 1.1vw, 2rem);
   margin: 1rem 0 0 0;
 }
 
@@ -86,7 +86,7 @@ header {
   background-color: var(--main-bg-color);
   position: fixed;
   width: clamp(22rem, 98vw, 1600px);
-  height: 9rem;
+  height: 7rem;
   top: 0;
   padding: 1rem 2rem;
   border-bottom: 2px var(--main-text-color) solid;
@@ -146,65 +146,47 @@ textarea {
   overflow: hidden;
 }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width: 1281px) {
   header {
-    height: 8rem;
+    height: 9rem;
   }
   .page-wrapper {
-    margin-top: 6rem;
+    margin-top: 8rem;
   }
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 1601px) {
   header {
-    height: clamp(7.5rem, 8rem, 10rem);
-  }
-  .page-wrapper {
-    margin-top: 7rem;
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-  header {
-    height: clamp(9rem, 10rem, 12rem);
+    height: 10rem;
   }
   .page-wrapper {
     margin-top: 9rem;
   }
 }
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1921px) {
   header {
-    height: clamp(10rem, 12rem, 14rem);
+    height: 13rem;
   }
   .page-wrapper {
-    margin-top: 11rem;
+    margin-top: 12rem;
   }
 }
 
-@media only screen and (min-width: 1700px) {
+@media only screen and (min-width: 2561px) {
   header {
-    height: clamp(12rem, 15rem, 17rem);
+    height: 16rem;
   }
   .page-wrapper {
-    margin-top: 14rem;
+    margin-top: 15rem;
   }
 }
 
-@media only screen and (min-width: 2000px) {
+@media only screen and (min-width: 3201px) {
   header {
-    height: clamp(14rem, 17rem, 20rem);
+    height: 19rem;
   }
   .page-wrapper {
-    margin-top: 16rem;
-  }
-}
-
-@media only screen and (min-width: 2300px) {
-  header {
-    height: clamp(16rem, 21rem, 22rem);
-  }
-  .page-wrapper {
-    margin-top: 20rem;
+    margin-top: 18rem;
   }
 }

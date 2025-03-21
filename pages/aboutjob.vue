@@ -24,7 +24,13 @@ article {
 }
 
 .cv {
-  width: 90%;
+  width: 100%;
   margin: 3rem auto;
+}
+
+@media only screen and (min-width: 460px) {
+  .cv {
+    width: 90%;
+  }
 }
 </style>
